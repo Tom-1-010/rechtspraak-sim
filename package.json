@@ -1,0 +1,12 @@
+{
+  "name": "rechtspraak-sim",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mobiel prototype voor Rechtbank Simulator NL met veilige AI-route.",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
