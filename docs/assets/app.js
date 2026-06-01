@@ -1,3 +1,13 @@
+const safariFix = document.createElement('style');
+safariFix.textContent = `
+  @media (max-width:430px){
+    html,body{height:100dvh!important;min-height:100dvh!important;overflow:hidden!important;background:#fbf8f1!important;}
+    .app{width:100vw!important;height:100dvh!important;min-height:100dvh!important;max-height:none!important;}
+    .content{padding-bottom:96px!important;}
+  }
+`;
+document.head.appendChild(safariFix);
+
 const S = { page:'home', current: SIM_DATA.cases[2], verdict:{}, selected:new Set(), history:[] };
 const $ = id => document.getElementById(id);
 const titleMap = {home:'Strafkamer',zaken:'Zaakbank',dossier:'Dossier',zitting:'Zitting',bewijs:'Bewijs',straf:'Strafmaat',uitspraak:'Vonnis',profiel:'Profiel'};
