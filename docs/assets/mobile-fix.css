@@ -1,0 +1,41 @@
+@media (max-width: 430px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
+    margin: 0;
+    overflow: hidden;
+    background: #fbf8f1;
+  }
+
+  .app {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: none;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    background: #fbf8f1;
+  }
+
+  .content {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 118px;
+    background: #fbf8f1;
+  }
+
+  .bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 92px;
+    padding: 7px 7px calc(10px + env(safe-area-inset-bottom));
+    z-index: 999;
+    box-shadow: 0 -8px 28px rgba(16, 26, 42, .10);
+  }
+}
