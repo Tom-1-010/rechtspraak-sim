@@ -55,6 +55,29 @@
   margin-bottom: 8px !important;
 }
 
+#straf {
+  padding-bottom: 300px !important;
+}
+
+#straf .summary,
+#straf .sentenceDock {
+  position: fixed !important;
+  left: 10px !important;
+  right: 10px !important;
+  bottom: calc(78px + env(safe-area-inset-bottom)) !important;
+  z-index: 950 !important;
+  margin: 0 !important;
+  max-height: 245px !important;
+  overflow-y: auto !important;
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(0,43,73,.16) !important;
+  box-shadow: 0 -8px 28px rgba(11,23,38,.12) !important;
+}
+
+#straf .summary .btn {
+  min-height: 40px !important;
+}
+
 @media (max-width: 430px) {
   .top {
     padding-top: 6px !important;
@@ -62,5 +85,9 @@
 
   .content {
     padding-top: 6px !important;
+  }
+
+  #straf {
+    padding-bottom: 315px !important;
   }
 }
