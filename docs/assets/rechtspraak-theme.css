@@ -1,0 +1,256 @@
+/* Rechtspraak.nl-geïnspireerde, neutrale simulatiestijl. Geen officiële logo's of huisstijlassets. */
+:root {
+  --bg: #f4f2ed;
+  --surface: #ffffff;
+  --surface2: #f7f5ef;
+  --ink: #111827;
+  --muted: #5f6b7a;
+  --line: #d8d2c8;
+  --navy: #003c64;
+  --navy2: #002b49;
+  --gold: #c9a13a;
+  --gold2: #f5ecd0;
+  --blue: #e8f1f8;
+  --green: #2f6b4f;
+  --red: #8b2e2e;
+  --shadow: none;
+  --r: 6px;
+}
+
+body {
+  background: #e9e5dd;
+}
+
+.app {
+  background: #f7f5ef;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .08);
+}
+
+.top {
+  background: #ffffff;
+  border-bottom: 4px solid #d7c48a;
+  padding: 12px 14px 14px;
+}
+
+.status {
+  color: var(--navy2);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.crumb {
+  color: #657186;
+  letter-spacing: .16em;
+  font-size: 10px;
+}
+
+.title {
+  color: var(--navy2);
+  font-size: 29px;
+  letter-spacing: -.055em;
+}
+
+.content {
+  background: #f7f5ef;
+  padding-top: 14px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #d8d2c8;
+  border-radius: 6px;
+  box-shadow: none;
+  padding: 14px;
+}
+
+.hero {
+  background: #ffffff;
+  border-top: 5px solid var(--navy);
+  color: var(--ink);
+}
+
+.hero h2 {
+  color: var(--navy2);
+  font-size: 22px;
+}
+
+.hero p {
+  color: #4d5968;
+}
+
+h2,
+h3,
+.section {
+  color: var(--navy2);
+}
+
+.section {
+  border-bottom: 2px solid #d7c48a;
+  padding-bottom: 6px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.stat {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #d8d2c8;
+  border-left: 5px solid var(--navy);
+}
+
+.stat span {
+  color: #5f6b7a;
+}
+
+.stat strong {
+  color: var(--navy2);
+}
+
+.pill {
+  border-radius: 3px;
+  background: #f7f5ef;
+  color: var(--navy2);
+  border-color: #d8d2c8;
+}
+
+.pill.gold {
+  background: #f5ecd0;
+  border-color: #d7c48a;
+  color: #5e4708;
+}
+
+.pill.blue {
+  background: #e8f1f8;
+  border-color: #bad1e2;
+  color: var(--navy);
+}
+
+.pill.green {
+  background: #e8f3ec;
+  color: #21543b;
+}
+
+.pill.red {
+  background: #f4e7e7;
+  color: #782323;
+}
+
+.btn {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.btn.primary {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn.gold {
+  background: #d7c48a;
+  border-color: #d7c48a;
+  color: #1f2933;
+}
+
+.field,
+.search,
+select.field,
+textarea.field {
+  border-radius: 4px;
+  border-color: #cfc7ba;
+  background: #ffffff;
+}
+
+.tabs {
+  border-bottom: 1px solid #d8d2c8;
+  padding-bottom: 8px;
+}
+
+.tab {
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--navy);
+}
+
+.tab.active {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
+}
+
+.doc {
+  border-radius: 6px;
+  box-shadow: none;
+  border-top: 5px solid var(--navy);
+}
+
+.chat,
+.check,
+.measure,
+.warning,
+.summary {
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.chatHead,
+.chatInput {
+  background: #f7f5ef;
+}
+
+.msg.ai {
+  background: #e8f1f8;
+  color: #102033;
+  border: 1px solid #c6d7e5;
+}
+
+.msg.user {
+  background: var(--navy);
+}
+
+.msg.system {
+  background: #f5ecd0;
+  color: #5e4708;
+  border: 1px solid #d7c48a;
+}
+
+.info {
+  border-radius: 50%;
+  background: #f5ecd0;
+  color: #5e4708;
+}
+
+.bottom {
+  background: #ffffff;
+  border-top: 4px solid #d7c48a;
+}
+
+.nav {
+  border-radius: 4px;
+  color: #5f6b7a;
+}
+
+.nav span {
+  border-radius: 3px;
+  background: #f1eee7;
+  color: var(--navy);
+}
+
+.nav.active {
+  background: #e8f1f8;
+  color: var(--navy2);
+}
+
+.nav.active span {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+@media (max-width: 430px) {
+  .top {
+    padding-top: 12px;
+  }
+
+  .hero {
+    margin-top: 2px;
+  }
+}
