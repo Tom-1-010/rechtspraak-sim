@@ -157,7 +157,7 @@ async function askAI(role,text){
       body:JSON.stringify({role,message:text,caseContext:S.current.casus,history:S.history.slice(-8)})});
     if(!r.ok) throw new Error('api');
     const j = await r.json();
-    $('aiMode').textContent = j.source==='gemini' ? 'AI: Gemini' : 'AI: mock';
+    $('aiMode').textContent = 'AI: mock';
     return j.reply || caseAwareReply(role,text);
   }catch(e){
     $('aiMode').textContent = 'AI: mock';

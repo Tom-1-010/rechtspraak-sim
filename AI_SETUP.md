@@ -1,14 +1,14 @@
-# AI-koppeling voor Rechtbank Simulator NL
+# Chat & deploy — Rechtbank Simulator NL
 
-Deze repo bevat een veilige server-side AI-route die op **Vercel** én **Render** draait:
+De zittingschat is een lokale simulatie zonder externe AI-dienst.
 
 ```text
-lib/chat.js      # gedeelde chatlogica (rolrestricties, mock, Gemini)
+lib/chat.js      # gedeelde chatlogica (rolrestricties + mock-antwoorden)
 api/chat.js      # Vercel serverless route
-server.js        # Render web service: statische site + POST /api/chat
+server.js        # Render web service: statische site + chat
 ```
 
-De API-key hoort nooit in `docs/index.html` te staan.
+De API hoort nooit in `docs/index.html` te staan; alle logica draait server-side of lokaal in de browser via de fallback.
 
 ## Werking
 
@@ -35,41 +35,35 @@ Response:
 
 ```json
 {
-  "reply": "Antwoord van de AI of fallback-mock.",
-  "source": "gemini"
+  "reply": "Mock-antwoord passend bij de rol.",
+  "source": "mock"
 }
 ```
+
+Bij een lege vraag geeft de route `400` terug; andere methodes dan POST geven `405`.
 
 ## Deploy op Render (web service)
 
 1. Push deze repo naar GitHub/GitLab.
-2. Maak in Render een **New → Web Service** aan, gekoppeld aan de repo.
+2. Maak in Render een **New → Web Service** aan, gekoppeld aan de repo (branch `main`).
 3. Render leest `render.yaml` automatisch (of stel in):
    - Build Command: `npm install`
    - Start Command: `npm start`
    - Environment: Node
    - Health Check Path: `/healthz`
-4. Voeg de environment variables toe:
-   - `GEMINI_API_KEY` (secret)
-   - `GEMINI_MODEL` (optioneel, standaard `gemini-2.5-flash`)
-5. Zonder `GEMINI_API_KEY` antwoordt de route automatisch met de mock-fallback (bron `mock-no-api-key`).
+4. Er zijn geen environment variables of secrets nodig.
 
-De site wordt geserveerd vanaf `/` (de inhoud van `docs/`). De zittingschat in de app roept `/api/chat` aan en valt bij fouten terug op de casus-specifieke mock-antwoorden.
+De site wordt geserveerd vanaf `/` (de inhoud van `docs/`).
 
 ## Deploy op Vercel (serverless)
 
-De bestaande Vercel-route blijft werken:
-
 - Framework Preset: Other
-- Build Command: overbodig
 - Output Directory: `docs`
-- Environment variables: `GEMINI_API_KEY`, optioneel `GEMINI_MODEL`
-
-`api/chat.js` hergebruikt dezelfde logica uit `lib/chat.js`.
+- `api/chat.js` hergebruikt dezelfde logica uit `lib/chat.js`.
 
 ## Belangrijk
 
-- Render-webservice draait `server.js`; GitHub Pages kan de API-route niet draaien.
+- Render-webservice draait `server.js`; GitHub Pages kan de chatroute niet draaien.
 - De route bevat rolrestricties voor verdachte, advocaat, officier van justitie, getuige, slachtoffer, verbalisant en reclassering.
 - De route is bedoeld voor fictieve simulatie en niet voor juridisch advies.
 - `GET /healthz` geeft `{"status":"ok"}` ten behoeve van de Render-healthcheck.
