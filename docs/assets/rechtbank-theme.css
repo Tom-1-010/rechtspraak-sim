@@ -1,0 +1,387 @@
+/* ============================================================
+   Rechtbank Simulator NL — Rechtspraak Theme v3
+   Eén samenhangend designsysteem: donkerblauwe rechtersbank,
+   papierkleurige dossiers, kaartgebaseerde mobiele app-UI.
+   ============================================================ */
+
+:root{
+  --navy:#12305c;
+  --navy-2:#1d4279;
+  --navy-ink:#0d1f3c;
+  --ink:#1c2638;
+  --ink-soft:#41506b;
+  --muted:#6b778d;
+  --line:#dfe4ee;
+  --line-soft:#eaedf4;
+  --bg:#f1f3f8;
+  --surface:#ffffff;
+  --paper:#fffdf7;
+  --paper-line:#e8e0ca;
+  --gold:#a87b21;
+  --gold-bg:#fbf3df;
+  --blue:#1e4f8a;
+  --blue-bg:#eaf1fa;
+  --green:#1e7647;
+  --green-bg:#e7f5ed;
+  --red:#ad3232;
+  --red-bg:#fbeaea;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 1px 2px rgba(13,31,60,.06),0 6px 20px rgba(13,31,60,.07);
+  --shadow-lg:0 8px 32px rgba(13,31,60,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+
+html,body{height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.45;
+  overscroll-behavior:none;
+}
+
+/* ---------- App-shell (mobiel-first, op desktop een nette telefoonbreedte) ---------- */
+.app{
+  display:flex;flex-direction:column;
+  width:100%;max-width:520px;margin:0 auto;
+  min-height:100dvh;max-height:100dvh;
+  background:var(--bg);
+  box-shadow:0 0 0 1px rgba(13,31,60,.08),var(--shadow-lg);
+}
+
+/* ---------- Header ---------- */
+header.top{
+  flex:0 0 auto;
+  background:linear-gradient(165deg,var(--navy-ink) 0%,var(--navy) 60%,var(--navy-2) 100%);
+  color:#fff;
+  padding:14px 16px 13px;
+  position:relative;
+}
+header.top::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,var(--gold) 0%,#e0c477 45%,transparent 100%);
+}
+header.top .status{
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+header.top .status span{
+  font-size:11px;font-weight:600;letter-spacing:.02em;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+  color:#dbe4f3;border-radius:999px;padding:4px 10px;
+  max-width:75%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+header.top .status #aiMode{
+  margin-left:auto;background:rgba(224,196,119,.18);border-color:rgba(224,196,119,.4);color:#f2dc9b;
+}
+header.top .crumb{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:#93a8c9;margin-bottom:4px;
+}
+header.top .title{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.1;}
+
+/* ---------- Inhoud ---------- */
+.content{
+  flex:1 1 auto;min-height:0;overflow-y:auto;
+  padding:14px 14px 104px;
+  scrollbar-width:none;
+}
+.content::-webkit-scrollbar{display:none;}
+
+.page{display:none;animation:fade .18s ease;}
+.page.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.section{
+  margin:18px 2px 8px;
+  font-size:16px;font-weight:700;color:var(--navy);
+  display:flex;align-items:center;gap:8px;
+}
+.section::after{content:'';flex:1;height:1px;background:var(--line);}
+
+/* ---------- Kaarten ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px;
+  box-shadow:var(--shadow);margin-bottom:12px;
+}
+.card h2{font-size:16px;color:var(--navy);margin-bottom:6px;}
+.card > p{color:var(--ink-soft);font-size:13px;}
+.verdictTitle{text-align:center;font-size:18px!important;margin-bottom:4px!important;}
+.card.hero{
+  background:linear-gradient(160deg,#fff 0%,#f7f9fd 100%);
+  border-left:4px solid var(--navy);
+}
+.card.hero h2{font-size:18px;color:var(--navy);margin-bottom:6px;}
+.card.hero p{font-size:13px;color:var(--ink-soft);}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+
+.stat{
+  background:var(--surface);border:1px solid var(--line);
+  border-top:3px solid var(--navy);border-radius:var(--radius-sm);
+  padding:11px 13px;
+}
+.stat span{
+  display:block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--muted);margin-bottom:2px;
+}
+.stat strong{font-size:23px;color:var(--navy);letter-spacing:-.02em;}
+
+/* ---------- Zaakkaarten ---------- */
+.caseCard{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;border-left:4px solid var(--blue);}
+.caseCard:active{transform:scale(.985);}
+.caseCard h3{font-size:15px;color:var(--navy);margin:9px 0 4px;}
+.caseCard p{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.caseCard .meta,.doc .meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+
+/* ---------- Pills ---------- */
+.pill{
+  display:inline-flex;align-items:center;
+  font-size:10.5px;font-weight:700;letter-spacing:.02em;
+  padding:3px 9px;border-radius:999px;
+  background:#f0f3f8;color:var(--ink-soft);border:1px solid var(--line-soft);
+  white-space:nowrap;
+}
+.pill.blue{background:var(--blue-bg);color:var(--blue);border-color:#cfe0f5;}
+.pill.gold{background:var(--gold-bg);color:var(--gold);border-color:#eedfae;}
+.pill.green{background:var(--green-bg);color:var(--green);border-color:#c3e7d1;}
+.pill.red{background:var(--red-bg);color:var(--red);border-color:#f0c6c6;}
+
+/* ---------- Knoppen & velden ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:42px;padding:10px 16px;
+  border:1px solid var(--line);border-radius:11px;
+  background:#fff;color:var(--ink);
+  font-size:13px;font-weight:700;font-family:inherit;
+  cursor:pointer;transition:all .12s ease;
+}
+.btn:active{transform:scale(.97);}
+.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy-ink);}
+.btn.primary:active{background:var(--navy-2);}
+.btn.full{width:100%;}
+
+.field,.search{
+  width:100%;min-height:42px;padding:10px 13px;
+  border:1px solid var(--line);border-radius:11px;
+  background:#fff;color:var(--ink);
+  font-size:13px;font-family:inherit;
+  appearance:none;
+}
+.field:focus,.search:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,79,138,.15);}
+select.field{padding-right:30px;}
+.toolbar{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.filterRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.filterRow label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:6px 0 3px;}
+
+/* ---------- Zoekbalk ---------- */
+.list{display:flex;flex-direction:column;}
+
+/* ---------- Dossier: papierachtig ---------- */
+.tabs{
+  display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;
+  scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{
+  flex:0 0 auto;
+  min-height:32px;padding:6px 12px;
+  border:1px solid var(--line);border-radius:999px;
+  background:#fff;color:var(--ink-soft);
+  font-size:11.5px;font-weight:700;font-family:inherit;
+  cursor:pointer;
+}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy-ink);}
+
+.doc{
+  background:var(--paper);
+  border:1px solid var(--paper-line);
+  border-radius:var(--radius);
+  padding:16px 15px;
+  box-shadow:var(--shadow);
+}
+.doc h2{font-size:18px;color:var(--navy);margin-bottom:3px;}
+.doc .docMeta{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--paper-line);
+}
+.doc p{color:#2c3446;line-height:1.6;margin-bottom:10px;font-size:13px;}
+.doc ul.docPunten{margin:4px 0 12px 18px;}
+.doc ul.docPunten li{color:#2c3446;line-height:1.55;margin-bottom:4px;font-size:13px;}
+
+/* ---------- Zitting ---------- */
+#zittingInfo p{margin:6px 0 0;font-size:13px;color:var(--ink-soft);}
+#zittingInfo p strong{color:var(--navy);}
+.card.chat{padding:0;overflow:hidden;}
+.chatHead{
+  display:flex;flex-direction:column;gap:6px;
+  padding:11px 13px;background:#f7f9fd;border-bottom:1px solid var(--line);
+}
+.chatHead label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.messages{
+  display:flex;flex-direction:column;gap:8px;
+  padding:12px 13px;max-height:46vh;overflow-y:auto;
+}
+.msg{
+  font-size:12.5px;line-height:1.5;
+  padding:9px 12px;border-radius:13px;
+  max-width:88%;
+}
+.msg.ai{background:var(--blue-bg);color:#22314a;border:1px solid #d6e3f4;border-bottom-left-radius:4px;align-self:flex-start;}
+.msg.user{background:var(--navy);color:#fff;border-bottom-right-radius:4px;align-self:flex-end;}
+.msg.system{
+  background:#fff;color:var(--muted);border:1px dashed var(--line);
+  font-size:11px;text-align:center;align-self:center;border-radius:10px;
+}
+.chatInput{display:flex;gap:8px;padding:11px 13px;border-top:1px solid var(--line);background:#fff;}
+
+/* ---------- Bewijs & verweren ---------- */
+.check{
+  background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:13px;margin-bottom:10px;
+}
+.check h3{font-size:14px;color:var(--navy);margin-bottom:3px;}
+.check p{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;}
+.checkLine{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:11px;font-weight:700;color:var(--muted);
+}
+.verweerCheck{
+  display:flex;align-items:center;gap:9px;
+  margin-top:9px;padding-top:9px;border-top:1px dashed var(--line);
+  font-size:12px;font-weight:700;color:var(--ink-soft);cursor:pointer;
+}
+.verweerCheck input{width:18px;height:18px;accent-color:var(--green);}
+
+.card.evidence{border-left:4px solid var(--blue);}
+.card.evidence h3{font-size:13.5px;color:var(--navy);margin:8px 0 4px;}
+.card.evidence p{font-size:12.5px;color:var(--ink-soft);}
+
+.warning{
+  background:var(--gold-bg);border:1px solid #eedfae;
+  border-radius:11px;padding:11px 13px;
+  color:#6f520f;font-size:12px;line-height:1.5;margin-bottom:9px;
+}
+.warning strong{color:#5a410b;}
+
+/* ---------- Strafmaat ---------- */
+.omBox{
+  background:#eef3fa;border:1px solid #cedcee;border-radius:13px;
+  padding:12px 14px;margin-bottom:12px;
+}
+.omBox h3{
+  font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--blue);margin:10px 0 3px;
+}
+.omBox h3:first-child{margin-top:0;}
+.omBox p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+
+.measure{
+  display:flex;align-items:flex-start;gap:10px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:11px 12px;margin-bottom:8px;cursor:pointer;
+}
+.measure input[type=checkbox]{width:19px;height:19px;margin-top:1px;accent-color:var(--navy);flex:0 0 auto;}
+.measure > div{flex:1;min-width:0;}
+.measure h3{font-size:13px;color:var(--navy);margin-bottom:2px;}
+.measure p{font-size:11.5px;color:var(--muted);}
+.info{
+  flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--blue-bg);color:var(--blue);
+  font-size:11px;font-weight:800;cursor:pointer;
+}
+.infoText{
+  display:none;flex-basis:100%;margin:6px 0 0 29px;
+  font-size:11.5px;color:var(--ink-soft);line-height:1.5;
+}
+.measure.open{flex-wrap:wrap;}
+.measure.open .infoText{display:block;}
+
+.summary{
+  background:linear-gradient(150deg,var(--navy) 0%,var(--navy-2) 100%);
+  color:#fff;border-radius:var(--radius);padding:13px 15px;margin:14px 0 10px;
+  box-shadow:var(--shadow);
+}
+.sumLine{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:5px 0;font-size:12px;
+}
+.sumLine span{color:#a9bcda;}
+.sumLine strong{color:#fff;text-align:right;font-size:12px;}
+
+/* ---------- Vonnis ---------- */
+.score{
+  width:108px;height:108px;border-radius:50%;
+  margin:6px auto 12px;display:grid;place-items:center;
+  background:conic-gradient(var(--green) 0 78%,#e2e6ee 78% 100%);
+  position:relative;
+}
+.score::before{content:'';position:absolute;inset:8px;background:#fff;border-radius:50%;}
+.score strong{position:relative;font-size:26px;color:var(--navy);letter-spacing:-.03em;}
+
+.radioLine{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 13px;border:1px solid var(--line);border-radius:11px;
+  margin-bottom:8px;background:#f8fafd;color:var(--ink);font-size:13px;font-weight:600;
+  cursor:pointer;
+}
+.radioLine input{width:18px;height:18px;accent-color:var(--navy);}
+textarea.field{min-height:140px;resize:vertical;line-height:1.55;}
+label{display:block;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin:10px 0 4px;}
+
+/* ---------- Bottom-nav ---------- */
+nav.bottom{
+  flex:0 0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  background:#fff;border-top:1px solid var(--line);
+  padding:7px 8px calc(8px + env(safe-area-inset-bottom));
+  box-shadow:0 -4px 20px rgba(13,31,60,.08);
+  position:relative;z-index:50;
+}
+nav.bottom .nav{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  background:none;border:none;cursor:pointer;
+  font-size:10px;font-weight:700;color:var(--muted);
+  padding:4px 2px;border-radius:10px;font-family:inherit;
+}
+nav.bottom .nav span{
+  width:26px;height:26px;border-radius:8px;
+  display:grid;place-items:center;
+  background:#eef1f7;color:var(--muted);
+  font-size:11px;font-weight:800;
+  transition:all .15s ease;
+}
+nav.bottom .nav.active{color:var(--navy);}
+nav.bottom .nav.active span{background:var(--navy);color:#fff;transform:translateY(-1px);}
+nav.bottom .nav.active::after{
+  content:'';width:16px;height:3px;border-radius:2px;
+  background:var(--gold);margin-top:1px;
+}
+
+/* ---------- Toetsenbordfocus ---------- */
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+/* ---------- Grotere schermen ---------- */
+@media (min-width:768px){
+  body{display:flex;justify-content:center;align-items:center;padding:24px;}
+  .app{height:min(900px,calc(100dvh - 48px));border-radius:26px;overflow:hidden;}
+  .content{padding-top:18px;}
+  .messages{max-height:none;}
+}
+
+@media (max-width:430px){
+  .app{border-radius:0;box-shadow:none;}
+  header.top{padding:12px 14px 11px;}
+  header.top .title{font-size:22px;}
+  .content{padding-bottom:96px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+}

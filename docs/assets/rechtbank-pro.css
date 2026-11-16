@@ -1,0 +1,90 @@
+/* Rechtbank Pro — verfijnde laag bovenop de bestaande thema's */
+:root{
+  --pro-bg:#f2f4f8;
+  --pro-card:#ffffff;
+  --pro-ink:#1b2537;
+  --pro-muted:#5b6478;
+  --pro-navy:#152a4a;
+  --pro-gold:#b98a2f;
+  --pro-green:#1f7a4d;
+  --pro-red:#b03636;
+  --pro-line:#dde3ec;
+}
+
+html,body{background:var(--pro-bg)!important;color:var(--pro-ink);}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+
+header.top{background:linear-gradient(160deg,var(--pro-navy) 0%,#22406e 100%)!important;color:#fff!important;}
+header.top .status span{color:#cdd8ea!important;}
+header.top .crumb{color:#9fb0cc!important;}
+header.top .title{color:#fff!important;letter-spacing:.2px;}
+
+.card{background:var(--pro-card)!important;border:1px solid var(--pro-line)!important;border-radius:14px!important;box-shadow:0 1px 3px rgba(21,42,74,.08)!important;}
+.card.hero h2{color:var(--pro-navy)!important;}
+.card.hero p{color:var(--pro-muted)!important;}
+.card.caseCard h3{color:var(--pro-navy)!important;}
+.card.caseCard p{color:var(--pro-muted)!important;}
+
+.pill{border:1px solid var(--pro-line)!important;background:#f6f8fb!important;color:var(--pro-muted)!important;font-weight:600!important;}
+.pill.blue{background:#e8f0fb!important;color:#24559c!important;border-color:#c6d8f2!important;}
+.pill.gold{background:#fbf3e2!important;color:#8a6318!important;border-color:#ecd9a8!important;}
+.pill.green{background:#e6f5ec!important;color:#1f7a4d!important;border-color:#bfe5d0!important;}
+.pill.red{background:#fbeaea!important;color:#b03636!important;border-color:#f0c8c8!important;}
+
+.btn{border-radius:10px!important;font-weight:600!important;}
+.btn.primary{background:var(--pro-navy)!important;color:#fff!important;border:1px solid #0e1e37!important;}
+.btn.primary:active{background:#1d3a63!important;}
+
+nav.bottom{background:#ffffff!important;border-top:1px solid var(--pro-line)!important;}
+nav.bottom .nav{color:var(--pro-muted)!important;}
+nav.bottom .nav.active{color:var(--pro-navy)!important;}
+nav.bottom .nav span{background:#eef1f6;color:var(--pro-muted);}
+nav.bottom .nav.active span{background:var(--pro-navy);color:#fff;}
+
+/* Dossier: document-uitnodigende typografie */
+article.doc{background:#fffdf8!important;border:1px solid #e7e0cf!important;border-radius:14px!important;box-shadow:0 1px 4px rgba(21,42,74,.06)!important;}
+article.doc h2{color:var(--pro-navy)!important;font-size:20px!important;margin-bottom:2px!important;}
+article.doc .docMeta{color:#8a6318!important;font-weight:600!important;font-size:12px!important;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px!important;}
+article.doc p{color:#333f52!important;line-height:1.55!important;}
+ul.docPunten{margin:8px 0 12px 18px;padding:0;}
+ul.docPunten li{color:#333f52;line-height:1.5;margin-bottom:4px;}
+.tabs{gap:6px;}
+.tab{border-radius:9px!important;border:1px solid var(--pro-line)!important;background:#f6f8fb!important;color:var(--pro-muted)!important;font-weight:600!important;}
+.tab.active{background:var(--pro-navy)!important;color:#fff!important;border-color:#0e1e37!important;}
+
+/* Bewijsstukken en verweren */
+.card.evidence h3{color:var(--pro-navy)!important;font-size:15px!important;}
+.card.evidence p{color:var(--pro-muted)!important;}
+.check{background:var(--pro-card)!important;border:1px solid var(--pro-line)!important;border-radius:12px!important;box-shadow:0 1px 3px rgba(21,42,74,.06)!important;}
+.check h3{color:var(--pro-navy)!important;}
+.verweerCheck{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:var(--pro-muted);font-weight:600;}
+.verweerCheck input{accent-color:var(--pro-green);width:18px;height:18px;}
+.radioLine{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--pro-line);border-radius:10px;margin-bottom:8px;background:#f6f8fb;color:var(--pro-ink);font-weight:600;}
+.radioLine input{accent-color:var(--pro-navy);width:18px;height:18px;}
+.warning{background:#fdf6e6!important;border:1px solid #ecd9a8!important;border-radius:12px!important;color:#6b4d10!important;}
+
+/* Strafmaat */
+.omBox{background:#eef2f9!important;border:1px solid #ccd8ea!important;border-radius:14px!important;}
+.omBox h3{color:var(--pro-navy)!important;font-size:13px!important;text-transform:uppercase;letter-spacing:.4px;margin:10px 0 2px!important;}
+.omBox p{color:#33415c!important;margin:0 0 6px!important;font-size:13.5px!important;}
+.summary{background:var(--pro-navy)!important;color:#fff!important;border-radius:14px!important;}
+.summary .sumLine span{color:#aebdd6!important;}
+.summary .sumLine strong{color:#fff!important;}
+
+/* Chat */
+.card.chat{border:1px solid var(--pro-line)!important;}
+.msg.ai{background:#eef2f9!important;color:#243247!important;border:1px solid #d8e1ef!important;}
+.msg.user{background:var(--pro-navy)!important;color:#fff!important;}
+.msg.system{background:#fdf6e6!important;color:#6b4d10!important;border:1px solid #ecd9a8!important;}
+
+/* Score ring */
+.score strong{color:var(--pro-navy)!important;}
+
+/* Stats */
+.stat{background:var(--pro-card)!important;border:1px solid var(--pro-line)!important;border-radius:12px!important;box-shadow:0 1px 3px rgba(21,42,74,.06)!important;}
+.stat span{color:var(--pro-muted)!important;}
+.stat strong{color:var(--pro-navy)!important;}
+
+/* Zoekvelden */
+.field,.search{border-radius:10px!important;border:1px solid var(--pro-line)!important;background:#fff!important;color:var(--pro-ink)!important;}
+.field:focus,.search:focus{outline:2px solid #9db8dd!important;}
